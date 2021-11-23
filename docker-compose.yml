@@ -1,0 +1,34 @@
+version: "3"
+services:
+  app:
+    build: ./pw20212tpbackend
+    depends_on:
+      - db
+    ports:
+      - "3020:3020"
+      - "4001:4001"
+    environment:
+      DBUSER: ${DBUSER}
+      DBPASS: ${DBPASS}
+      DBNAME: ${DBNAME}
+      DBHOST: db
+      JWT_SECRET: ${JWT_SECRET}
+      ADM_EMAIL: ${ADM_EMAIL}
+      ADM_BCRYPT_PASS: ${ADM_BCRYPT_PASS}
+  db:
+    image: postgres:13.4-alpine
+    ports:
+     - "5432:5432"
+    environment:
+      POSTGRES_USER: ${DBUSER}
+      POSTGRES_PASSWORD: ${DBPASS}
+      POSTGRES_DB: ${DBNAME}
+
+  web:
+    build: ./pw2021tpfrondend
+    ports:
+      - "3021:3021"
+    environment:
+      REACT_APP_API_PREFIX: "http://localhost:4000/"
+      REACT_APP_IMGSERVER_PREFIX: "http://localhost:4001/"
+      PORT: "3021"
