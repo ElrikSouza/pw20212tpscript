@@ -15,7 +15,7 @@ services:
       DBHOST: db
       JWT_SECRET: ${JWT_SECRET}
       ADM_EMAIL: ${ADM_EMAIL}
-      ADM_BCRYPT_PASS: ${ADM_BCRYPT_PASS}
+      ADM_BCRYPT_PASS: "$$2b$$04$$nePTU40RLoCTyttcQo4FJ.ydvdTPOMD1pbZOcsydlbyWXnoxESfV6"
       PORT: "3020"
     volumes:
       - uploads:/public
