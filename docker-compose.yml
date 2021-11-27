@@ -16,6 +16,7 @@ services:
       JWT_SECRET: ${JWT_SECRET}
       ADM_EMAIL: ${ADM_EMAIL}
       ADM_BCRYPT_PASS: ${ADM_BCRYPT_PASS}
+      PORT: "3020"
     volumes:
       - uploads:/public
   db:
@@ -32,7 +33,7 @@ services:
     ports:
       - "3021:3021"
     environment:
-      REACT_APP_API_PREFIX: "http://localhost:4000/"
+      REACT_APP_API_PREFIX: "http://localhost:3020/"
       REACT_APP_IMGSERVER_PREFIX: "http://localhost:4001/"
       PORT: "3021"
     volumes:
